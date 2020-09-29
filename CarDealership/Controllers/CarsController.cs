@@ -26,5 +26,19 @@ namespace CarDealership.Controllers
       return RedirectToAction("Index");
 
     }
+    // [HttpPost("/Cars/Delete")]
+    // public ActionResult Clear()
+    // {
+    //   Car.ClearAll();
+    //   //return View();
+    //   return RedirectToAction("Index");
+
+    // }
+    [HttpGet("/Cars/Delete")]
+    public ActionResult Delete()
+    {
+      Car.ClearAll();
+      return View();
+    }
   }
 }
