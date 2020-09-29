@@ -1,0 +1,30 @@
+using Microsoft.AspNetCore.Mvc;
+using CarDealership.Models;
+using System.Collections.Generic;
+
+namespace CarDealership.Controllers
+{
+  public class CarsController : Controller
+  {
+    [HttpGet("/Cars")]
+    public ActionResult Index()
+    {
+      List<Car> allCars = Car.GetAll();
+      return View(allCars);
+    }
+
+    [HttpGet("/Cars/new")]
+    public ActionResult Form()
+    {
+      return View();
+    }
+
+    [HttpPost("/Cars")]
+    public ActionResult Create(string makeModel, int price, int miles)
+    {
+      Car myCar = new Car(makeModel, price, miles);
+      return RedirectToAction("Index");
+
+    }
+  }
+}
